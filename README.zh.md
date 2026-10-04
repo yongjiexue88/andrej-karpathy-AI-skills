@@ -8,6 +8,14 @@
 
 [English](./README.md) | 简体中文
 
+## 让智能体自动安装
+
+将下面的指令复制到 Codex、Claude Code 或 Cursor：
+
+```text
+请按照 https://github.com/yongjiexue88/andrej-karpathy-output-skills 的 README，为我当前使用的智能体在个人技能目录中安装 karpathy-output-guidelines 技能，保留现有技能和项目指令，并验证安装结果。
+```
+
 ## 快速安装
 
 ```bash

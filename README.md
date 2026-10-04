@@ -8,6 +8,14 @@ Use [`skills/karpathy-output-guidelines/SKILL.md`](./skills/karpathy-output-guid
 
 English | [简体中文](./README.zh.md)
 
+## Install with Your Agent
+
+Copy this prompt into Codex, Claude Code, or Cursor:
+
+```text
+Install karpathy-output-guidelines from https://github.com/yongjiexue88/andrej-karpathy-output-skills for this agent following the repository's README, preserve existing skills and project instructions, and verify the installation.
+```
+
 ## Quick Install
 
 ```bash
