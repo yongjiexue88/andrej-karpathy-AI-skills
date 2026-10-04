@@ -15,7 +15,7 @@ Copy this prompt once into your AI agent. It needs access to GitHub and permissi
 ```text
 Read https://github.com/yongjiexue88/andrej-karpathy-output-skills and install its standalone skills/karpathy-output-guidelines/ skill for the agent I am using now.
 
-Find your supported skill directory, prefer user-level installation, and download the complete skill folder there. Keep automatic selection and explicit invocation enabled where supported. Add a short instruction to your persistent guidance to load and apply this skill before coding tasks and written explanations. Preserve existing skills, settings, and instructions; avoid duplicates. If you support only instruction files, merge the repository's guidelines into your supported instruction file.
+Find your supported skill directory, prefer user-level installation, and download the complete skill folder there. Keep automatic selection and explicit invocation enabled where supported. Add a short instruction to your persistent guidance to load and apply this skill before coding tasks and when answering questions. Preserve existing skills, settings, and instructions; avoid duplicates. If you support only instruction files, merge the repository's guidelines into your supported instruction file.
 
 I authorize the installation and persistent guidance update. Verify all eight rules are present, report the installation location and exact way to trigger the skill, and state whether a reload or new session is needed. Ask only if a required permission or missing information blocks progress.
 ```
@@ -38,10 +38,10 @@ For a directly installed standalone skill, these agents also provide explicit in
 | Claude Code | `/karpathy-output-guidelines` | [Skills](https://code.claude.com/docs/en/skills) |
 | Cursor | `/karpathy-output-guidelines` in Agent chat | [Skills](https://cursor.com/docs/skills) |
 
-Automatic selection is enabled for relevant coding and explanation tasks. Selection depends on the agent; a skill's presence alone does not make its full instructions apply to every message. For routine use, the installation prompt adds this instruction to the agent's supported persistent guidance:
+The skill's own [trigger description and rules](./skills/karpathy-output-guidelines/SKILL.md) cover coding tasks and user questions. Automatic selection is enabled. Selection depends on the agent; a skill's presence alone does not make its full instructions apply to every message. For routine use, the installation prompt adds this instruction to the agent's supported persistent guidance:
 
 ```text
-Before coding tasks and written explanations, load and apply karpathy-output-guidelines. Respect the user's task scope and requested format.
+Before coding tasks and when answering questions, load and apply karpathy-output-guidelines. Respect the user's task scope and requested format.
 ```
 
 The combined [AGENTS.md](./AGENTS.md) and [CLAUDE.md](./CLAUDE.md) contain the full guidelines for persistent project guidance. Cursor's always-applied rule setup is in [CURSOR.md](./CURSOR.md).

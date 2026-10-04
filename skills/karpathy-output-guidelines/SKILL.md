@@ -1,6 +1,6 @@
 ---
 name: karpathy-output-guidelines
-description: Coding and output control guidelines. Use when writing, reviewing, or refactoring code, preparing written explanations or summaries, choosing diagrams or interactive explainers, or when the user asks to apply karpathy-output-guidelines.
+description: Use whenever the user asks to write, debug, test, review, refactor, or explain code, or asks a question that needs an answer, explanation, summary, comparison, recommendation, or instructions. Apply coding and output control guidelines to keep changes focused and answers clear. Also use when explicitly requested by name.
 license: MIT
 ---
 
@@ -8,7 +8,15 @@ license: MIT
 
 Four coding principles and four output control rules for AI agents. The coding principles are derived from [Andrej Karpathy's observations](https://x.com/karpathy/status/2015883857489522876) on LLM coding pitfalls; the output rules follow his advice on making model outputs easier to understand.
 
-**When invoked:** Apply the coding principles to code work and the output rules to explanations. Use the user's task scope, audience, and requested format to decide which rules apply.
+## Trigger Rules
+
+Use this skill by default whenever:
+
+- The user asks to write code, build or change software, debug, test, review, refactor, or explain code.
+- The user asks a question or requests an explanation, summary, comparison, recommendation, or instructions.
+- The user explicitly requests `karpathy-output-guidelines`.
+
+Apply the coding principles when working with code. Apply the output rules when answering questions or presenting results. Respect the user's task scope, audience, and requested format. Keep simple answers short; add visuals or interactivity when they improve understanding.
 
 **Tradeoff:** These guidelines bias toward caution over speed. For trivial tasks, use judgment.
 
