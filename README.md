@@ -36,16 +36,22 @@ From Andrej's post:
 
 > "They still sometimes change/remove comments and code they don't sufficiently understand as side effects, even if orthogonal to the task."
 
+Even correct results can be hard to understand when the writing is dense or the output format does not suit the topic.
+
 ## The Solution
 
-Four coding principles that directly address these issues:
+Eight principles in one skill: four for coding and four for output.
 
-| Principle | Addresses |
-|-----------|-----------|
-| **Think Before Coding** | Wrong assumptions, hidden confusion, missing tradeoffs |
-| **Simplicity First** | Overcomplication, bloated abstractions |
-| **Surgical Changes** | Orthogonal edits, touching code you shouldn't |
-| **Goal-Driven Execution** | Leverage through tests-first, verifiable success criteria |
+| # | Principle | Addresses |
+|---|-----------|-----------|
+| 1 | **Think Before Coding** | Wrong assumptions, hidden confusion, missing tradeoffs |
+| 2 | **Simplicity First** | Overcomplication, bloated abstractions |
+| 3 | **Surgical Changes** | Orthogonal edits, touching code you shouldn't |
+| 4 | **Goal-Driven Execution** | Verifiable success criteria and focused checks |
+| 5 | **Prefer Clarity over Complexity** | Dense language, jargon, and ambiguity |
+| 6 | **Prefer Visual Explanations When They Improve Understanding** | Relationships, processes, and architecture hidden in long prose |
+| 7 | **Use Interactive Outputs for Complex Topics** | Inputs, states, and cause and effect that need exploration |
+| 8 | **Match the Output Medium to the Learning Problem** | Formats that add polish without improving understanding |
 
 ## The Four Coding Principles in Detail
 
@@ -114,18 +120,81 @@ For multi-step tasks, state a brief plan:
 
 Strong success criteria let the LLM loop independently. Weak criteria ("make it work") require constant clarification.
 
-## Output Control Rules
+## The Four Output Rules in Detail
 
 As agents do more work autonomously, more of our work becomes oversight and understanding. Agents can help by producing clear writing and custom diagrams, interactive pages, or explainer videos suited to the topic.
 
-| Rule | Agent behavior |
-|-----------------------|----------------|
-| **Prefer clarity over complexity** | Use simple, precise writing. Aim for roughly 80% of ASD-STE100's clarity principles: short sentences, direct language, and minimal ambiguity. |
-| **Prefer visual explanations** | Use diagrams, flowcharts, tables, or images when they clarify relationships, processes, comparisons, or architecture. |
-| **Use interactive outputs for complex topics** | Create an HTML/web-based explainer when the reader needs to explore inputs, states, sequences, or examples that static output cannot explain clearly. |
-| **Match the output medium to the learning problem** | Consider **text → diagram → interactive webpage → explainer video**. Choose richer formats when they materially improve comprehension, not just appearance. |
+### 5. Prefer Clarity over Complexity
 
-All eight principles live in one [`karpathy-output-guidelines` skill](./skills/karpathy-output-guidelines/SKILL.md). The output rules follow the existing style: a concise principle, concrete agent instructions, a tradeoff, and a comprehension check. The 80% target is a writing heuristic, not formal ASD-STE100 compliance. The format progression is a set of options, not a required sequence.
+**Simple words. Short sentences. Precise meaning.**
+
+Aim for roughly 80% of ASD-STE100's clarity principles. This is a practical style target, not a claim of formal compliance.
+
+When writing:
+- Lead with the main point, then explain the details the reader needs.
+- Use short sentences and one main idea per sentence.
+- Prefer active voice, direct verbs, and familiar words.
+- Use the same term for the same concept. Define necessary technical terms.
+- Make actors, actions, conditions, and references explicit.
+- Keep important facts, qualifications, and technical identifiers intact.
+- Remove filler, repeated points, and complexity that adds no meaning.
+
+The test: Can the intended reader understand each sentence on the first pass without losing important information?
+
+### 6. Prefer Visual Explanations When They Improve Understanding
+
+**Show the relationship. Label what matters.**
+
+Add a visual when it improves understanding. A simple fact or action usually needs only text.
+
+When explaining:
+- Use a diagram for components, dependencies, or architecture.
+- Use a flowchart for steps, branches, or decisions.
+- Use a table for options, mappings, or comparisons.
+- Use an image when shape, position, or appearance carries the meaning.
+- Keep labels, arrows, units, and legends clear. Match them to the facts.
+- Include a short text takeaway so the reader knows what to notice.
+- Remove decoration and detail that hide the main relationship.
+
+The test: Does the visual make the relationship easier to understand than the equivalent prose?
+
+### 7. Use Interactive Outputs for Complex Topics
+
+**Let the reader change something and see why it matters.**
+
+Interactivity must teach something. Keep the artifact as small as the learning problem allows.
+
+When static output is insufficient:
+- Identify what the reader needs to explore: inputs, states, sequence, or cause and effect.
+- Create an HTML/web-based explainer focused on that learning goal.
+- Use sliders, toggles, step controls, or worked examples with visible feedback.
+- Use animation to explain change over time. Provide pause or replay when useful.
+- Start with a meaningful default state and a short explanation of the controls.
+- Keep essential conclusions available in text as well as through interaction.
+- Verify the initial view and representative interactions before sharing the artifact.
+- Provide the usable file or preview link with a brief takeaway.
+
+The test: Does interacting with the artifact reveal something the static explanation could not show clearly?
+
+### 8. Match the Output Medium to the Learning Problem
+
+**Choose the format that makes the topic easiest to understand.**
+
+Prefer richer formats when they materially improve comprehension. Account for the reader's time and the cost of producing and using the output.
+
+Before producing an explanation:
+- Respect the user's requested format, audience, and constraints.
+- Consider the progression: **text → diagram → interactive webpage → explainer video**. It is a set of options, not a mandatory sequence.
+- Use text for direct answers, definitions, and short instructions.
+- Use a diagram, table, or image when relationships or comparisons carry the meaning.
+- Use an interactive webpage when the reader needs to explore variables, states, or examples.
+- Use a custom explainer video when a guided visual sequence, motion, or narration materially improves understanding.
+- Choose the simplest format that meets the learning goal. Richer output should add insight, not just polish.
+- If the chosen medium is unavailable, provide a usable alternative and state the limitation.
+
+The test: What can the reader understand in this format that would be harder to understand in a simpler one?
+
+All eight principles are packaged in one [`karpathy-output-guidelines` skill](./skills/karpathy-output-guidelines/SKILL.md).
 
 ## Install
 
