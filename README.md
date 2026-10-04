@@ -2,7 +2,7 @@
 
 [Project repository](https://github.com/yongjiexue88/andrej-karpathy-output-skills)
 
-An installable Claude Code plugin with one reusable skill: four coding principles and four output control rules for AI agents. The coding principles are derived from [Andrej Karpathy's observations](https://x.com/karpathy/status/2015883857489522876) on LLM coding pitfalls. The output rules follow his advice on making model outputs easier to understand.
+One reusable skill for AI agents: four coding principles and four output control rules. Also available as a Claude Code plugin. The coding principles are derived from [Andrej Karpathy's observations](https://x.com/karpathy/status/2015883857489522876) on LLM coding pitfalls. The output rules follow his advice on making model outputs easier to understand.
 
 Use [`skills/karpathy-output-guidelines/SKILL.md`](./skills/karpathy-output-guidelines/SKILL.md), or the combined [`AGENTS.md`](./AGENTS.md) and [`CLAUDE.md`](./CLAUDE.md) for all eight rules. `AGENTS.md` is the standard instruction filename for Codex; `CLAUDE.md` serves Claude Code.
 
@@ -10,29 +10,21 @@ English | [简体中文](./README.zh.md)
 
 ## Install with One Prompt (recommended)
 
-Copy this entire prompt once into a local Claude Code, Codex, or Cursor agent with terminal and file access. The agent performs the installation and verification for you.
+Copy this prompt once into your AI agent. It needs access to GitHub and permission to write local files. The agent chooses the installation location for its own environment.
 
 ```text
-Install https://github.com/yongjiexue88/andrej-karpathy-output-skills for the agent I am using now. I authorize installing this plugin or skill for my user account. Complete the installation with your tools; do not stop after explaining commands or adding the marketplace.
+Read https://github.com/yongjiexue88/andrej-karpathy-output-skills and install the skills from its skills/ directory for the agent I am using now.
 
-For Claude Code, use the native CLI through your terminal tool, including in the desktop Code tab where /plugin slash commands may be unavailable:
-1. Check existing state with `claude plugin marketplace list --json` and `claude plugin list --json`.
-2. If missing, add the marketplace with `claude plugin marketplace add yongjiexue88/andrej-karpathy-output-skills`.
-3. If not installed at user scope, run `claude plugin install andrej-karpathy-output-skills@karpathy-output-skills --scope user`.
-4. Verify it is installed and enabled with `claude plugin list --json`. If disabled, enable it with `claude plugin enable andrej-karpathy-output-skills@karpathy-output-skills --scope user`, then verify again. Inspect the installed `skills/karpathy-output-guidelines/SKILL.md` and confirm it contains all eight rules.
+Identify your supported skill installation location, prefer user-level installation, and use your tools to download the complete skill folders there. Preserve folder structure, existing skills, settings, and project instructions. Reuse an identical installation. If you support only instruction files, merge the repository's guidelines into your supported instruction file without duplicating them.
 
-For Codex or Cursor, install the repository's `skills/karpathy-output-guidelines` folder using that agent's supported personal-skill installation method. Verify the installed SKILL.md contains all eight rules. Do not install a Claude plugin for a different agent.
-
-Preserve unrelated settings, skills, and project instructions. Reuse an existing matching installation. Ask only if a required permission or missing information blocks progress.
-
-Report the verified install location, scope, and version if available. Reload skills/plugins if this session supports it; otherwise tell me to start a new session. Distinguish installation on disk from availability in this session. If terminal or file access is unavailable, report the blocker instead of claiming success.
+I authorize this installation. Complete it and verify that all eight rules are present and the installed skills are discoverable. Report the installation location and whether a reload or new session is needed. Ask only if a required permission or missing information blocks progress.
 ```
 
-Claude's native installer runs inside the agent's tools; you do not need to copy shell commands yourself. Plugins installed through the CLI load in a new session or after a supported reload. See the [official Claude Code installation documentation](https://code.claude.com/docs/en/discover-plugins#install-from-your-shell).
+The skill folders live in [`skills/`](./skills), each with a `SKILL.md` entry point. The agent downloads them directly and uses its supported skill installation method. You do not need to choose an agent-specific command or run an installation script.
 
 ## Manual Installation (optional)
 
-**Option A: Claude Code Plugin (recommended)**
+**Option A: Claude Code Plugin**
 
 From an interactive Claude Code terminal session, first add the marketplace:
 
@@ -54,7 +46,7 @@ This makes the guidelines available as a Claude Code plugin across your projects
 
 The repository includes [plugin metadata](./.claude-plugin/plugin.json) and a [marketplace catalog](./.claude-plugin/marketplace.json), following the official [Claude Code marketplace format](https://code.claude.com/docs/en/plugin-marketplaces).
 
-**Option B: CLAUDE.md (per-project)**
+**Option B: Project instruction files**
 
 For a new project, copy [`CLAUDE.md`](./CLAUDE.md) into the project root.
 

@@ -2,7 +2,7 @@
 
 [项目仓库](https://github.com/yongjiexue88/andrej-karpathy-output-skills)
 
-一个可安装的 Claude Code 插件，包含一个可复用技能：四个编码原则和四个输出控制规则。编码原则源自 [Andrej Karpathy 的观察](https://x.com/karpathy/status/2015883857489522876)，用于减少 LLM 常见的编码错误。输出规则根据他关于提高模型输出可理解性的建议整理。
+一个适用于 AI 智能体的可复用技能：四个编码原则和四个输出控制规则，也提供 Claude Code 插件。编码原则源自 [Andrej Karpathy 的观察](https://x.com/karpathy/status/2015883857489522876)，用于减少 LLM 常见的编码错误。输出规则根据他关于提高模型输出可理解性的建议整理。
 
 使用 [`skills/karpathy-output-guidelines/SKILL.md`](./skills/karpathy-output-guidelines/SKILL.md)，或使用包含全部八条规则的 [`AGENTS.md`](./AGENTS.md) 和 [`CLAUDE.md`](./CLAUDE.md)。`AGENTS.md` 是 Codex 的标准指令文件名；`CLAUDE.md` 用于 Claude Code。
 
@@ -10,29 +10,21 @@
 
 ## 一段指令完成安装（推荐）
 
-将下面的完整指令一次性复制到具有终端和文件访问权限的本地 Claude Code、Codex 或 Cursor 智能体。智能体会完成安装和验证。
+将下面的指令一次性复制到你的 AI 智能体。它需要访问 GitHub 和写入本地文件的权限，并自行选择适合当前环境的安装位置。
 
 ```text
-请为我当前使用的智能体安装 https://github.com/yongjiexue88/andrej-karpathy-output-skills。我授权为我的用户账号安装这个插件或技能。请使用你的工具完成安装，不要只解释命令，也不要添加插件市场后就停止。
+请阅读 https://github.com/yongjiexue88/andrej-karpathy-output-skills，并为我当前使用的智能体安装其 skills/ 目录中的技能。
 
-如果你是 Claude Code，请通过终端工具使用原生 CLI；桌面应用的 Code 标签页可能无法执行 /plugin 斜杠命令，也使用此方式：
-1. 运行 `claude plugin marketplace list --json` 和 `claude plugin list --json` 检查现有状态。
-2. 如果尚未添加市场，运行 `claude plugin marketplace add yongjiexue88/andrej-karpathy-output-skills`。
-3. 如果尚未在用户范围安装，运行 `claude plugin install andrej-karpathy-output-skills@karpathy-output-skills --scope user`。
-4. 运行 `claude plugin list --json` 验证插件已安装并启用。如果未启用，运行 `claude plugin enable andrej-karpathy-output-skills@karpathy-output-skills --scope user`，然后再次验证。检查已安装的 `skills/karpathy-output-guidelines/SKILL.md`，确认包含全部八条规则。
+识别你支持的技能安装位置，优先使用用户级安装，并通过你的工具将完整技能文件夹下载到该位置。保留文件夹结构、现有技能、设置和项目指令。已有相同安装时直接复用。如果你只支持指令文件，将仓库中的指南合并到你支持的指令文件中，避免重复添加。
 
-如果你是 Codex 或 Cursor，请使用当前智能体支持的个人技能安装方式，安装仓库中的 `skills/karpathy-output-guidelines` 文件夹。检查已安装的 SKILL.md，确认包含全部八条规则。不要为其他智能体安装 Claude 插件。
-
-保留无关的设置、技能和项目指令。已有相同安装时直接复用。只有必要权限或缺少信息阻碍操作时才询问我。
-
-最后报告已验证的安装位置、范围和版本（如可获取）。如果当前会话支持，重新加载技能或插件；否则告诉我开启新会话。区分磁盘上的安装状态与当前会话中的可用状态。如果没有终端或文件访问权限，请说明阻碍原因，不要声称安装成功。
+我授权此次安装。请完成安装，并验证全部八条规则已安装且技能可被发现。报告安装位置，以及是否需要重新加载或开启新会话。只有必要权限或缺少信息阻碍操作时才询问我。
 ```
 
-Claude 的原生安装器由智能体通过工具执行，你无需自己复制终端命令。通过 CLI 安装的插件在新会话或支持的重新加载后生效，见 [Claude Code 官方安装文档](https://code.claude.com/docs/en/discover-plugins#install-from-your-shell)。
+技能文件夹位于 [`skills/`](./skills)，每个文件夹都有一个 `SKILL.md` 入口文件。智能体直接下载这些文件夹，并使用自身支持的技能安装方式。你无需选择特定智能体的命令，也无需运行安装脚本。
 
 ## 手动安装（可选）
 
-**选项 A：Claude Code 插件（推荐）**
+**选项 A：Claude Code 插件**
 
 在交互式 Claude Code 终端会话中，首先添加插件市场：
 
@@ -54,7 +46,7 @@ Claude 的原生安装器由智能体通过工具执行，你无需自己复制�
 
 仓库包含[插件元数据](./.claude-plugin/plugin.json)和[插件市场目录](./.claude-plugin/marketplace.json)，采用官方的 [Claude Code 插件市场格式](https://code.claude.com/docs/en/plugin-marketplaces)。
 
-**选项 B：CLAUDE.md（按项目）**
+**选项 B：项目指令文件**
 
 新项目：将 [`CLAUDE.md`](./CLAUDE.md) 复制到项目根目录。
 
