@@ -13,7 +13,7 @@
 将下面的指令复制到 Codex、Claude Code 或 Cursor：
 
 ```text
-请按照 https://github.com/yongjiexue88/andrej-karpathy-output-skills 的 README，为我当前使用的智能体选择插件或技能的安装方式，安装这些指南，保留现有技能和项目指令，并验证安装结果。
+请按照 https://github.com/yongjiexue88/andrej-karpathy-output-skills 的 README，为我当前使用的智能体选择合适的安装方式，安装这些指南，保留现有技能和项目指令，并验证安装结果。
 ```
 
 ## 安装
@@ -38,31 +38,15 @@
 /andrej-karpathy-output-skills:karpathy-output-guidelines
 ```
 
-如果智能体从终端安装，使用：
-
-```bash
-claude plugin marketplace add yongjiexue88/andrej-karpathy-output-skills
-claude plugin install andrej-karpathy-output-skills@karpathy-output-skills --scope user
-```
-
 仓库包含[插件元数据](./.claude-plugin/plugin.json)和[插件市场目录](./.claude-plugin/marketplace.json)，采用官方的 [Claude Code 插件市场格式](https://code.claude.com/docs/en/plugin-marketplaces)。
 
 **选项 B：CLAUDE.md（按项目）**
 
-新项目：
+新项目：将 [`CLAUDE.md`](./CLAUDE.md) 复制到项目根目录。
 
-```bash
-curl -fsSL https://raw.githubusercontent.com/yongjiexue88/andrej-karpathy-output-skills/main/CLAUDE.md -o CLAUDE.md
-```
+已有项目：将其内容追加到项目的 `CLAUDE.md` 中，保留现有指令。
 
-已有项目（追加）：
-
-```bash
-printf '\n' >> CLAUDE.md
-curl -fsSL https://raw.githubusercontent.com/yongjiexue88/andrej-karpathy-output-skills/main/CLAUDE.md >> CLAUDE.md
-```
-
-如需 Codex 项目指令，将下载 URL 和目标文件名中的 `CLAUDE.md` 都替换为 `AGENTS.md`。Codex、Cursor 的个人技能安装方式，以及由安装脚本管理的项目更新方式，见[其他安装方式](#其他安装方式)。
+Codex 使用 [`AGENTS.md`](./AGENTS.md)。也可以复制上面的指令，让智能体完成这些操作。
 
 ## 问题所在
 
@@ -238,53 +222,9 @@ LLM 经常默默选择一种解释然后执行。这个原则强制明确推理�
 
 全部八条原则集中在一个 [`karpathy-output-guidelines` 技能](./skills/karpathy-output-guidelines/SKILL.md)中。
 
-## 其他安装方式
-
-**个人技能（单个文件夹）**
-
-克隆仓库后运行安装脚本。需要 Bash 和标准 shell 工具，可用于 macOS、Linux，以及使用 Git Bash/WSL 的 Windows。
-
-```bash
-git clone https://github.com/yongjiexue88/andrej-karpathy-output-skills.git
-cd andrej-karpathy-output-skills
-bash install.sh
-```
-
-如果已有本地仓库，在仓库根目录运行对应命令：
-
-| 智能体 | 命令 | 安装目录 |
-|--------|------|----------|
-| Codex（默认） | `bash install.sh` | `$CODEX_HOME/skills`；未设置时为 `~/.codex/skills` |
-| Claude Code | `bash install.sh claude` | `~/.claude/skills` |
-| Cursor | `bash install.sh cursor` | `~/.cursor/skills` |
-
-Claude Code 和 Cursor 的安装目录依据官方的 [Claude Code 技能文档](https://code.claude.com/docs/en/skills#choose-where-skills-load)和 [Cursor 技能文档](https://cursor.com/docs/skills#skill-directories)。
-
-安装后开启新的智能体会话。技能在相关任务中加载；项目指令文件提供项目的常驻指导。
-
-**项目指令：AGENTS.md 和 CLAUDE.md**
-
-将全部八条规则添加到现有项目：
-
-```bash
-bash install.sh project "/path/to/your/project"
-```
-
-这会创建或更新 `AGENTS.md` 和 `CLAUDE.md`，保留现有项目指令。安装脚本只管理一个带标记的区块，重复运行会更新规则而不会重复添加。修改前会在目标文件旁保存备份；内容相同的文件会跳过。
-
-**自定义技能目录**
-
-选择其他安装目录：
-
-```bash
-bash install.sh codex --dest "/path/to/skills"
-```
-
-运行 `bash install.sh --help` 查看用法。也可以手动将 [`karpathy-output-guidelines` 文件夹](./skills/karpathy-output-guidelines)复制到智能体的技能目录，或将相关指令文件合并到项目中。
-
 ## 在 Cursor 中使用
 
-运行 `bash install.sh cursor` 安装合并后的技能。设置方法和始终应用的项目规则见 **[CURSOR.md](CURSOR.md)**。
+将技能复制到 Cursor 或创建始终应用的项目规则，见 **[CURSOR.md](CURSOR.md)**。
 
 ## 核心洞察
 
@@ -307,7 +247,7 @@ bash install.sh codex --dest "/path/to/skills"
 
 ## 定制
 
-这些指南可以与 `AGENTS.md` 或 `CLAUDE.md` 中的项目特定指令合并。将自己的指令放在安装脚本管理的标记区块之外，以便后续更新时保留。
+这些指南可以与 `AGENTS.md` 或 `CLAUDE.md` 中的项目特定指令合并。添加或更新这些指南时，保留现有项目指令。
 
 对于项目特定规则，添加如下章节：
 

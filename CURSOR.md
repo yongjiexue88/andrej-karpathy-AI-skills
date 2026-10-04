@@ -4,15 +4,7 @@ This repository provides one [`karpathy-output-guidelines` skill](skills/karpath
 
 ## Personal Agent Skills
 
-From the repository root, run:
-
-```bash
-bash install.sh cursor
-```
-
-This installs the combined skill into `~/.cursor/skills/karpathy-output-guidelines/`, under the user-level directory described in the official [Cursor skill documentation](https://cursor.com/docs/skills#skill-directories). Start a new agent session after installation. The installer backs up changed files and skips unchanged ones.
-
-You can also manually copy the [`karpathy-output-guidelines` folder](skills/karpathy-output-guidelines) into your personal skills directory.
+Copy the [`karpathy-output-guidelines` folder](skills/karpathy-output-guidelines) to `~/.cursor/skills/karpathy-output-guidelines/`, under the user-level directory described in the official [Cursor skill documentation](https://cursor.com/docs/skills#skill-directories). Start a new agent session after copying the skill.
 
 ## Project Rules
 

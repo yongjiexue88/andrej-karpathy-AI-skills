@@ -13,7 +13,7 @@ English | [简体中文](./README.zh.md)
 Copy this prompt into Codex, Claude Code, or Cursor:
 
 ```text
-Install the guidelines from https://github.com/yongjiexue88/andrej-karpathy-output-skills for this agent using the README's plugin or skill installation instructions, preserve existing skills and project instructions, and verify the installation.
+Install the guidelines from https://github.com/yongjiexue88/andrej-karpathy-output-skills for this agent using the README's installation instructions, preserve existing skills and project instructions, and verify the installation.
 ```
 
 ## Install
@@ -38,31 +38,15 @@ This makes the guidelines available as a Claude Code plugin across your projects
 /andrej-karpathy-output-skills:karpathy-output-guidelines
 ```
 
-For an agent installing from a terminal, use:
-
-```bash
-claude plugin marketplace add yongjiexue88/andrej-karpathy-output-skills
-claude plugin install andrej-karpathy-output-skills@karpathy-output-skills --scope user
-```
-
 The repository includes [plugin metadata](./.claude-plugin/plugin.json) and a [marketplace catalog](./.claude-plugin/marketplace.json), following the official [Claude Code marketplace format](https://code.claude.com/docs/en/plugin-marketplaces).
 
 **Option B: CLAUDE.md (per-project)**
 
-New project:
+For a new project, copy [`CLAUDE.md`](./CLAUDE.md) into the project root.
 
-```bash
-curl -fsSL https://raw.githubusercontent.com/yongjiexue88/andrej-karpathy-output-skills/main/CLAUDE.md -o CLAUDE.md
-```
+For an existing project, append its contents to your project's `CLAUDE.md`, preserving your existing instructions.
 
-Existing project (append):
-
-```bash
-printf '\n' >> CLAUDE.md
-curl -fsSL https://raw.githubusercontent.com/yongjiexue88/andrej-karpathy-output-skills/main/CLAUDE.md >> CLAUDE.md
-```
-
-For Codex project instructions, use `AGENTS.md` in both the download URL and destination filename. For personal skills in Codex or Cursor, or project updates managed by the installer, see [Other Installation Options](#other-installation-options).
+For Codex, use [`AGENTS.md`](./AGENTS.md) instead. You can ask your agent to do this with the prompt above.
 
 ## The Problems
 
@@ -234,53 +218,9 @@ The test: What can the reader understand in this format that would be harder to 
 
 All eight principles are packaged in one [`karpathy-output-guidelines` skill](./skills/karpathy-output-guidelines/SKILL.md).
 
-## Other Installation Options
-
-**Personal skill**
-
-Clone the repository and run the installer. It requires Bash and standard shell utilities on macOS, Linux, or Windows with Git Bash/WSL.
-
-```bash
-git clone https://github.com/yongjiexue88/andrej-karpathy-output-skills.git
-cd andrej-karpathy-output-skills
-bash install.sh
-```
-
-If you already have this checkout, run the installer from its root:
-
-| Agent | Command | Destination |
-|-------|---------|-------------|
-| Codex (default) | `bash install.sh` | `$CODEX_HOME/skills`, or `~/.codex/skills` when unset |
-| Claude Code | `bash install.sh claude` | `~/.claude/skills` |
-| Cursor | `bash install.sh cursor` | `~/.cursor/skills` |
-
-The Claude Code and Cursor destinations follow their official [Claude Code skill documentation](https://code.claude.com/docs/en/skills#choose-where-skills-load) and [Cursor skill documentation](https://cursor.com/docs/skills#skill-directories).
-
-Start a new agent session after installation. Skills load when relevant; project instruction files apply as the project's standing guidance.
-
-**Project instructions: AGENTS.md and CLAUDE.md**
-
-To add all eight rules to an existing project:
-
-```bash
-bash install.sh project "/path/to/your/project"
-```
-
-This creates or updates `AGENTS.md` and `CLAUDE.md`. Existing project instructions stay intact. The installer manages one marked block, so re-running it updates the rules without duplicating them. Changed files get a backup beside the destination; unchanged files are skipped.
-
-**Custom skills directory**
-
-To choose another destination:
-
-```bash
-bash install.sh codex --dest "/path/to/skills"
-```
-
-Run `bash install.sh --help` for usage. You can also manually copy the [`karpathy-output-guidelines` folder](./skills/karpathy-output-guidelines) into your agent's skills directory, or merge the relevant instruction file into your project.
-
 ## Using with Cursor
 
-Run `bash install.sh cursor` to install the combined skill. See **[CURSOR.md](CURSOR.md)** for setup and creating an always-applied project rule.
+See **[CURSOR.md](CURSOR.md)** to copy the skill into Cursor or create an always-applied project rule.
 
 ## Key Insight
 
@@ -303,7 +243,7 @@ These guidelines are working if you see:
 
 ## Customization
 
-These guidelines are designed to be merged with project-specific instructions in `AGENTS.md` or `CLAUDE.md`. Keep your own instructions outside the installer's marked block so future updates preserve them.
+These guidelines are designed to be merged with project-specific instructions in `AGENTS.md` or `CLAUDE.md`. Preserve your existing project instructions when adding or updating these guidelines.
 
 For project-specific rules, add sections like:
 
