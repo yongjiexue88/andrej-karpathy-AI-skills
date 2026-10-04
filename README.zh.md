@@ -2,7 +2,7 @@
 
 [项目仓库](https://github.com/yongjiexue88/andrej-karpathy-output-skills)
 
-一个可复用技能，包含四个编码原则和四个输出控制规则。编码原则源自 [Andrej Karpathy 的观察](https://x.com/karpathy/status/2015883857489522876)，用于减少 LLM 常见的编码错误。输出规则根据他关于提高模型输出可理解性的建议整理。
+一个可安装的 Claude Code 插件，包含一个可复用技能：四个编码原则和四个输出控制规则。编码原则源自 [Andrej Karpathy 的观察](https://x.com/karpathy/status/2015883857489522876)，用于减少 LLM 常见的编码错误。输出规则根据他关于提高模型输出可理解性的建议整理。
 
 使用 [`skills/karpathy-output-guidelines/SKILL.md`](./skills/karpathy-output-guidelines/SKILL.md)，或使用包含全部八条规则的 [`AGENTS.md`](./AGENTS.md) 和 [`CLAUDE.md`](./CLAUDE.md)。`AGENTS.md` 是 Codex 的标准指令文件名；`CLAUDE.md` 用于 Claude Code。
 
@@ -13,18 +13,56 @@
 将下面的指令复制到 Codex、Claude Code 或 Cursor：
 
 ```text
-请按照 https://github.com/yongjiexue88/andrej-karpathy-output-skills 的 README，为我当前使用的智能体在个人技能目录中安装 karpathy-output-guidelines 技能，保留现有技能和项目指令，并验证安装结果。
+请按照 https://github.com/yongjiexue88/andrej-karpathy-output-skills 的 README，为我当前使用的智能体选择插件或技能的安装方式，安装这些指南，保留现有技能和项目指令，并验证安装结果。
 ```
 
-## 快速安装
+## 安装
+
+**选项 A：Claude Code 插件（推荐）**
+
+在 Claude Code 中，首先添加插件市场：
+
+```text
+/plugin marketplace add yongjiexue88/andrej-karpathy-output-skills
+```
+
+然后安装插件：
+
+```text
+/plugin install andrej-karpathy-output-skills@karpathy-output-skills
+```
+
+这会让指南以 Claude Code 插件的形式在你的各个项目中可用。全部八条规则集中在一个技能中，Claude 可以在相关任务中使用它。也可以直接调用：
+
+```text
+/andrej-karpathy-output-skills:karpathy-output-guidelines
+```
+
+如果智能体从终端安装，使用：
 
 ```bash
-git clone https://github.com/yongjiexue88/andrej-karpathy-output-skills.git
-cd andrej-karpathy-output-skills
-bash install.sh
+claude plugin marketplace add yongjiexue88/andrej-karpathy-output-skills
+claude plugin install andrej-karpathy-output-skills@karpathy-output-skills --scope user
 ```
 
-这会为 Codex 安装一个包含全部八条规则的技能。如果已有本地仓库，只需在仓库中运行 `bash install.sh`。Claude Code、Cursor 和项目指令的安装方式见[安装](#安装)。
+仓库包含[插件元数据](./.claude-plugin/plugin.json)和[插件市场目录](./.claude-plugin/marketplace.json)，采用官方的 [Claude Code 插件市场格式](https://code.claude.com/docs/en/plugin-marketplaces)。
+
+**选项 B：CLAUDE.md（按项目）**
+
+新项目：
+
+```bash
+curl -fsSL https://raw.githubusercontent.com/yongjiexue88/andrej-karpathy-output-skills/main/CLAUDE.md -o CLAUDE.md
+```
+
+已有项目（追加）：
+
+```bash
+printf '\n' >> CLAUDE.md
+curl -fsSL https://raw.githubusercontent.com/yongjiexue88/andrej-karpathy-output-skills/main/CLAUDE.md >> CLAUDE.md
+```
+
+如需 Codex 项目指令，将下载 URL 和目标文件名中的 `CLAUDE.md` 都替换为 `AGENTS.md`。Codex、Cursor 的个人技能安装方式，以及由安装脚本管理的项目更新方式，见[其他安装方式](#其他安装方式)。
 
 ## 问题所在
 
@@ -200,11 +238,19 @@ LLM 经常默默选择一种解释然后执行。这个原则强制明确推理�
 
 全部八条原则集中在一个 [`karpathy-output-guidelines` 技能](./skills/karpathy-output-guidelines/SKILL.md)中。
 
-## 安装
+## 其他安装方式
 
 **个人技能（单个文件夹）**
 
-在仓库根目录运行安装脚本。需要 Bash 和标准 shell 工具，可用于 macOS、Linux，以及使用 Git Bash/WSL 的 Windows。
+克隆仓库后运行安装脚本。需要 Bash 和标准 shell 工具，可用于 macOS、Linux，以及使用 Git Bash/WSL 的 Windows。
+
+```bash
+git clone https://github.com/yongjiexue88/andrej-karpathy-output-skills.git
+cd andrej-karpathy-output-skills
+bash install.sh
+```
+
+如果已有本地仓库，在仓库根目录运行对应命令：
 
 | 智能体 | 命令 | 安装目录 |
 |--------|------|----------|

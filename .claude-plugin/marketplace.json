@@ -1,0 +1,14 @@
+{
+  "name": "karpathy-output-skills",
+  "description": "Karpathy-inspired coding and output guidelines for AI agents.",
+  "owner": {
+    "name": "yongjiexue88"
+  },
+  "plugins": [
+    {
+      "name": "andrej-karpathy-output-skills",
+      "source": "./",
+      "description": "Four coding principles and four output control rules in one reusable skill for AI agents."
+    }
+  ]
+}

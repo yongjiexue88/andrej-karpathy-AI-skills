@@ -1,0 +1,12 @@
+{
+  "name": "andrej-karpathy-output-skills",
+  "version": "1.0.0",
+  "description": "Four coding principles and four output control rules in one reusable skill for AI agents.",
+  "author": {
+    "name": "yongjiexue88"
+  },
+  "homepage": "https://github.com/yongjiexue88/andrej-karpathy-output-skills",
+  "repository": "https://github.com/yongjiexue88/andrej-karpathy-output-skills",
+  "license": "MIT",
+  "keywords": ["coding", "guidelines", "output", "clarity", "diagrams", "interactive-explainers"]
+}

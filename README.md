@@ -2,7 +2,7 @@
 
 [Project repository](https://github.com/yongjiexue88/andrej-karpathy-output-skills)
 
-One reusable skill with four coding principles and four output control rules for AI agents. The coding principles are derived from [Andrej Karpathy's observations](https://x.com/karpathy/status/2015883857489522876) on LLM coding pitfalls. The output rules follow his advice on making model outputs easier to understand.
+An installable Claude Code plugin with one reusable skill: four coding principles and four output control rules for AI agents. The coding principles are derived from [Andrej Karpathy's observations](https://x.com/karpathy/status/2015883857489522876) on LLM coding pitfalls. The output rules follow his advice on making model outputs easier to understand.
 
 Use [`skills/karpathy-output-guidelines/SKILL.md`](./skills/karpathy-output-guidelines/SKILL.md), or the combined [`AGENTS.md`](./AGENTS.md) and [`CLAUDE.md`](./CLAUDE.md) for all eight rules. `AGENTS.md` is the standard instruction filename for Codex; `CLAUDE.md` serves Claude Code.
 
@@ -13,18 +13,56 @@ English | [简体中文](./README.zh.md)
 Copy this prompt into Codex, Claude Code, or Cursor:
 
 ```text
-Install karpathy-output-guidelines from https://github.com/yongjiexue88/andrej-karpathy-output-skills for this agent following the repository's README, preserve existing skills and project instructions, and verify the installation.
+Install the guidelines from https://github.com/yongjiexue88/andrej-karpathy-output-skills for this agent using the README's plugin or skill installation instructions, preserve existing skills and project instructions, and verify the installation.
 ```
 
-## Quick Install
+## Install
+
+**Option A: Claude Code Plugin (recommended)**
+
+From within Claude Code, first add the marketplace:
+
+```text
+/plugin marketplace add yongjiexue88/andrej-karpathy-output-skills
+```
+
+Then install the plugin:
+
+```text
+/plugin install andrej-karpathy-output-skills@karpathy-output-skills
+```
+
+This makes the guidelines available as a Claude Code plugin across your projects. All eight rules are in one skill, which Claude can use when relevant. To invoke it directly:
+
+```text
+/andrej-karpathy-output-skills:karpathy-output-guidelines
+```
+
+For an agent installing from a terminal, use:
 
 ```bash
-git clone https://github.com/yongjiexue88/andrej-karpathy-output-skills.git
-cd andrej-karpathy-output-skills
-bash install.sh
+claude plugin marketplace add yongjiexue88/andrej-karpathy-output-skills
+claude plugin install andrej-karpathy-output-skills@karpathy-output-skills --scope user
 ```
 
-This installs one skill containing all eight rules for Codex. If you already have this checkout, run `bash install.sh` in it. See [Install](#install) for Claude Code, Cursor, and project instructions.
+The repository includes [plugin metadata](./.claude-plugin/plugin.json) and a [marketplace catalog](./.claude-plugin/marketplace.json), following the official [Claude Code marketplace format](https://code.claude.com/docs/en/plugin-marketplaces).
+
+**Option B: CLAUDE.md (per-project)**
+
+New project:
+
+```bash
+curl -fsSL https://raw.githubusercontent.com/yongjiexue88/andrej-karpathy-output-skills/main/CLAUDE.md -o CLAUDE.md
+```
+
+Existing project (append):
+
+```bash
+printf '\n' >> CLAUDE.md
+curl -fsSL https://raw.githubusercontent.com/yongjiexue88/andrej-karpathy-output-skills/main/CLAUDE.md >> CLAUDE.md
+```
+
+For Codex project instructions, use `AGENTS.md` in both the download URL and destination filename. For personal skills in Codex or Cursor, or project updates managed by the installer, see [Other Installation Options](#other-installation-options).
 
 ## The Problems
 
@@ -196,11 +234,19 @@ The test: What can the reader understand in this format that would be harder to 
 
 All eight principles are packaged in one [`karpathy-output-guidelines` skill](./skills/karpathy-output-guidelines/SKILL.md).
 
-## Install
+## Other Installation Options
 
 **Personal skill**
 
-Run the installer from the repository root. It requires Bash and standard shell utilities on macOS, Linux, or Windows with Git Bash/WSL.
+Clone the repository and run the installer. It requires Bash and standard shell utilities on macOS, Linux, or Windows with Git Bash/WSL.
+
+```bash
+git clone https://github.com/yongjiexue88/andrej-karpathy-output-skills.git
+cd andrej-karpathy-output-skills
+bash install.sh
+```
+
+If you already have this checkout, run the installer from its root:
 
 | Agent | Command | Destination |
 |-------|---------|-------------|
