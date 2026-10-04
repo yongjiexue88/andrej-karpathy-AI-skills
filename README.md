@@ -1,6 +1,6 @@
 # Karpathy-Inspired Coding and Output Guidelines
 
-[Project repository](https://github.com/yongjiexue88/andrej-karpathy-output-skills)
+[Project repository](https://github.com/yongjiexue88/andrej-karpathy-AI-skills)
 
 One reusable skill for AI agents: four coding principles and four output control rules. Also available as a Claude Code plugin. The coding principles are derived from [Andrej Karpathy's observations](https://x.com/karpathy/status/2015883857489522876) on LLM coding pitfalls. The output rules follow his advice on making model outputs easier to understand.
 
@@ -13,7 +13,7 @@ English | [简体中文](./README.zh.md)
 Copy this prompt once into your AI agent. It needs access to GitHub and permission to write local files. The agent chooses the installation location for its own environment.
 
 ```text
-Read https://github.com/yongjiexue88/andrej-karpathy-output-skills and install its standalone skills/karpathy-output-guidelines/ skill for the agent I am using now.
+Read https://github.com/yongjiexue88/andrej-karpathy-AI-skills and install its standalone skills/karpathy-output-guidelines/ skill for the agent I am using now.
 
 Find your supported skill directory, prefer user-level installation, and download the complete skill folder there. Keep automatic selection and explicit invocation enabled where supported. Add a short instruction to your persistent guidance to load and apply this skill before coding tasks and when answering questions. Preserve existing skills, settings, and instructions; avoid duplicates. If you support only instruction files, merge the repository's guidelines into your supported instruction file.
 
@@ -65,7 +65,7 @@ For Codex, use [`AGENTS.md`](./AGENTS.md) instead. You can ask your agent to do 
 From an interactive Claude Code terminal session, first add the marketplace:
 
 ```text
-/plugin marketplace add yongjiexue88/andrej-karpathy-output-skills
+/plugin marketplace add yongjiexue88/andrej-karpathy-AI-skills
 ```
 
 Then install the plugin:

@@ -1,6 +1,6 @@
 # 受 Karpathy 启发的编码与输出指南
 
-[项目仓库](https://github.com/yongjiexue88/andrej-karpathy-output-skills)
+[项目仓库](https://github.com/yongjiexue88/andrej-karpathy-AI-skills)
 
 一个适用于 AI 智能体的可复用技能：四个编码原则和四个输出控制规则，也提供 Claude Code 插件。编码原则源自 [Andrej Karpathy 的观察](https://x.com/karpathy/status/2015883857489522876)，用于减少 LLM 常见的编码错误。输出规则根据他关于提高模型输出可理解性的建议整理。
 
@@ -13,7 +13,7 @@
 将下面的指令一次性复制到你的 AI 智能体。它需要访问 GitHub 和写入本地文件的权限，并自行选择适合当前环境的安装位置。
 
 ```text
-请阅读 https://github.com/yongjiexue88/andrej-karpathy-output-skills，并为我当前使用的智能体安装独立的 skills/karpathy-output-guidelines/ 技能。
+请阅读 https://github.com/yongjiexue88/andrej-karpathy-AI-skills，并为我当前使用的智能体安装独立的 skills/karpathy-output-guidelines/ 技能。
 
 找到你支持的技能目录，优先使用用户级安装，并将完整技能文件夹下载到该位置。在支持的情况下保持自动选择和显式调用开启。在你的常驻指令中添加一条简短指令，要求在编码任务和回答问题前加载并应用此技能。保留现有技能、设置和指令，避免重复添加。如果你只支持指令文件，将仓库中的指南合并到你支持的指令文件中。
 
@@ -65,7 +65,7 @@ Codex 使用 [`AGENTS.md`](./AGENTS.md)。也可以复制上面的指令，让�
 在交互式 Claude Code 终端会话中，首先添加插件市场：
 
 ```text
-/plugin marketplace add yongjiexue88/andrej-karpathy-output-skills
+/plugin marketplace add yongjiexue88/andrej-karpathy-AI-skills
 ```
 
 然后安装插件：
