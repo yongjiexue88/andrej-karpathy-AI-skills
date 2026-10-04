@@ -1,12 +1,14 @@
 ---
 name: karpathy-output-guidelines
-description: Behavioral guidelines for careful coding and clear explanations. Use when writing, reviewing, or refactoring code, or explaining technical results, to keep changes focused, verify outcomes, and choose an output format that improves understanding.
+description: Coding and output control guidelines. Use when writing, reviewing, or refactoring code, preparing written explanations or summaries, choosing diagrams or interactive explainers, or when the user asks to apply karpathy-output-guidelines.
 license: MIT
 ---
 
 # Karpathy Output Guidelines
 
 Four coding principles and four output control rules for AI agents. The coding principles are derived from [Andrej Karpathy's observations](https://x.com/karpathy/status/2015883857489522876) on LLM coding pitfalls; the output rules follow his advice on making model outputs easier to understand.
+
+**When invoked:** Apply the coding principles to code work and the output rules to explanations. Use the user's task scope, audience, and requested format to decide which rules apply.
 
 **Tradeoff:** These guidelines bias toward caution over speed. For trivial tasks, use judgment.
 

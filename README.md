@@ -13,18 +13,54 @@ English | [简体中文](./README.zh.md)
 Copy this prompt once into your AI agent. It needs access to GitHub and permission to write local files. The agent chooses the installation location for its own environment.
 
 ```text
-Read https://github.com/yongjiexue88/andrej-karpathy-output-skills and install the skills from its skills/ directory for the agent I am using now.
+Read https://github.com/yongjiexue88/andrej-karpathy-output-skills and install its standalone skills/karpathy-output-guidelines/ skill for the agent I am using now.
 
-Identify your supported skill installation location, prefer user-level installation, and use your tools to download the complete skill folders there. Preserve folder structure, existing skills, settings, and project instructions. Reuse an identical installation. If you support only instruction files, merge the repository's guidelines into your supported instruction file without duplicating them.
+Find your supported skill directory, prefer user-level installation, and download the complete skill folder there. Keep automatic selection and explicit invocation enabled where supported. Add a short instruction to your persistent guidance to load and apply this skill before coding tasks and written explanations. Preserve existing skills, settings, and instructions; avoid duplicates. If you support only instruction files, merge the repository's guidelines into your supported instruction file.
 
-I authorize this installation. Complete it and verify that all eight rules are present and the installed skills are discoverable. Report the installation location and whether a reload or new session is needed. Ask only if a required permission or missing information blocks progress.
+I authorize the installation and persistent guidance update. Verify all eight rules are present, report the installation location and exact way to trigger the skill, and state whether a reload or new session is needed. Ask only if a required permission or missing information blocks progress.
 ```
 
 The skill folders live in [`skills/`](./skills), each with a `SKILL.md` entry point. The agent downloads them directly and uses its supported skill installation method. You do not need to choose an agent-specific command or run an installation script.
 
+## Trigger the Skill
+
+Ask your agent to load the installed skill by name:
+
+```text
+Use karpathy-output-guidelines for this task.
+```
+
+For a directly installed standalone skill, these agents also provide explicit invocation:
+
+| Agent | Trigger | Documentation |
+|-------|---------|---------------|
+| Codex | `$karpathy-output-guidelines` | [Skills](https://developers.openai.com/codex/skills) |
+| Claude Code | `/karpathy-output-guidelines` | [Skills](https://code.claude.com/docs/en/skills) |
+| Cursor | `/karpathy-output-guidelines` in Agent chat | [Skills](https://cursor.com/docs/skills) |
+
+Automatic selection is enabled for relevant coding and explanation tasks. Selection depends on the agent; a skill's presence alone does not make its full instructions apply to every message. For routine use, the installation prompt adds this instruction to the agent's supported persistent guidance:
+
+```text
+Before coding tasks and written explanations, load and apply karpathy-output-guidelines. Respect the user's task scope and requested format.
+```
+
+The combined [AGENTS.md](./AGENTS.md) and [CLAUDE.md](./CLAUDE.md) contain the full guidelines for persistent project guidance. Cursor's always-applied rule setup is in [CURSOR.md](./CURSOR.md).
+
 ## Manual Installation (optional)
 
-**Option A: Claude Code Plugin**
+**Option A: Standalone skill**
+
+Copy the complete [`karpathy-output-guidelines` folder](./skills/karpathy-output-guidelines) into your agent's supported skill directory. Keep `SKILL.md` and its supporting files together. Load or refresh the skill list, then use the explicit trigger above. This installation does not require a plugin.
+
+**Option B: Project instruction files**
+
+For a new project, copy [`CLAUDE.md`](./CLAUDE.md) into the project root.
+
+For an existing project, append its contents to your project's `CLAUDE.md`, preserving your existing instructions.
+
+For Codex, use [`AGENTS.md`](./AGENTS.md) instead. You can ask your agent to do this with the prompt above.
+
+**Option C: Claude Code Plugin (optional)**
 
 From an interactive Claude Code terminal session, first add the marketplace:
 
@@ -45,14 +81,6 @@ This makes the guidelines available as a Claude Code plugin across your projects
 ```
 
 The repository includes [plugin metadata](./.claude-plugin/plugin.json) and a [marketplace catalog](./.claude-plugin/marketplace.json), following the official [Claude Code marketplace format](https://code.claude.com/docs/en/plugin-marketplaces).
-
-**Option B: Project instruction files**
-
-For a new project, copy [`CLAUDE.md`](./CLAUDE.md) into the project root.
-
-For an existing project, append its contents to your project's `CLAUDE.md`, preserving your existing instructions.
-
-For Codex, use [`AGENTS.md`](./AGENTS.md) instead. You can ask your agent to do this with the prompt above.
 
 ## The Problems
 

@@ -13,18 +13,54 @@
 将下面的指令一次性复制到你的 AI 智能体。它需要访问 GitHub 和写入本地文件的权限，并自行选择适合当前环境的安装位置。
 
 ```text
-请阅读 https://github.com/yongjiexue88/andrej-karpathy-output-skills，并为我当前使用的智能体安装其 skills/ 目录中的技能。
+请阅读 https://github.com/yongjiexue88/andrej-karpathy-output-skills，并为我当前使用的智能体安装独立的 skills/karpathy-output-guidelines/ 技能。
 
-识别你支持的技能安装位置，优先使用用户级安装，并通过你的工具将完整技能文件夹下载到该位置。保留文件夹结构、现有技能、设置和项目指令。已有相同安装时直接复用。如果你只支持指令文件，将仓库中的指南合并到你支持的指令文件中，避免重复添加。
+找到你支持的技能目录，优先使用用户级安装，并将完整技能文件夹下载到该位置。在支持的情况下保持自动选择和显式调用开启。在你的常驻指令中添加一条简短指令，要求在编码任务和文字解释前加载并应用此技能。保留现有技能、设置和指令，避免重复添加。如果你只支持指令文件，将仓库中的指南合并到你支持的指令文件中。
 
-我授权此次安装。请完成安装，并验证全部八条规则已安装且技能可被发现。报告安装位置，以及是否需要重新加载或开启新会话。只有必要权限或缺少信息阻碍操作时才询问我。
+我授权安装和常驻指令更新。验证全部八条规则已安装，报告安装位置和触发技能的具体方式，并说明是否需要重新加载或开启新会话。只有必要权限或缺少信息阻碍操作时才询问我。
 ```
 
 技能文件夹位于 [`skills/`](./skills)，每个文件夹都有一个 `SKILL.md` 入口文件。智能体直接下载这些文件夹，并使用自身支持的技能安装方式。你无需选择特定智能体的命令，也无需运行安装脚本。
 
+## 触发技能
+
+按名称要求智能体加载已安装的技能：
+
+```text
+请在此次任务中使用 karpathy-output-guidelines。
+```
+
+直接安装独立技能后，以下智能体也支持显式调用：
+
+| 智能体 | 触发方式 | 文档 |
+|--------|----------|------|
+| Codex | `$karpathy-output-guidelines` | [技能文档](https://developers.openai.com/codex/skills) |
+| Claude Code | `/karpathy-output-guidelines` | [技能文档](https://code.claude.com/docs/en/skills) |
+| Cursor | 在 Agent 聊天中输入 `/karpathy-output-guidelines` | [技能文档](https://cursor.com/docs/skills) |
+
+相关编码和解释任务的自动选择保持开启。是否自动选择由智能体决定；安装技能本身不会让完整指令应用到每条消息。为便于日常使用，安装指令会将以下内容添加到智能体支持的常驻指令中：
+
+```text
+在编码任务和文字解释前，加载并应用 karpathy-output-guidelines。遵守用户的任务范围和指定输出形式。
+```
+
+[AGENTS.md](./AGENTS.md) 和 [CLAUDE.md](./CLAUDE.md) 包含用于项目常驻指导的完整指南。Cursor 的始终应用规则设置见 [CURSOR.md](./CURSOR.md)。
+
 ## 手动安装（可选）
 
-**选项 A：Claude Code 插件**
+**选项 A：独立技能**
+
+将完整的 [`karpathy-output-guidelines` 文件夹](./skills/karpathy-output-guidelines) 复制到智能体支持的技能目录，保持 `SKILL.md` 和辅助文件在一起。加载或刷新技能列表后，使用上面的显式触发方式。这种安装方式无需插件。
+
+**选项 B：项目指令文件**
+
+新项目：将 [`CLAUDE.md`](./CLAUDE.md) 复制到项目根目录。
+
+已有项目：将其内容追加到项目的 `CLAUDE.md` 中，保留现有指令。
+
+Codex 使用 [`AGENTS.md`](./AGENTS.md)。也可以复制上面的指令，让智能体完成这些操作。
+
+**选项 C：Claude Code 插件（可选）**
 
 在交互式 Claude Code 终端会话中，首先添加插件市场：
 
@@ -45,14 +81,6 @@
 ```
 
 仓库包含[插件元数据](./.claude-plugin/plugin.json)和[插件市场目录](./.claude-plugin/marketplace.json)，采用官方的 [Claude Code 插件市场格式](https://code.claude.com/docs/en/plugin-marketplaces)。
-
-**选项 B：项目指令文件**
-
-新项目：将 [`CLAUDE.md`](./CLAUDE.md) 复制到项目根目录。
-
-已有项目：将其内容追加到项目的 `CLAUDE.md` 中，保留现有指令。
-
-Codex 使用 [`AGENTS.md`](./AGENTS.md)。也可以复制上面的指令，让智能体完成这些操作。
 
 ## 问题所在
 

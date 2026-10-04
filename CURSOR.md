@@ -6,6 +6,8 @@ This repository provides one [`karpathy-output-guidelines` skill](skills/karpath
 
 Copy the [`karpathy-output-guidelines` folder](skills/karpathy-output-guidelines) to `~/.cursor/skills/karpathy-output-guidelines/`, under the user-level directory described in the official [Cursor skill documentation](https://cursor.com/docs/skills#skill-directories). Start a new agent session after copying the skill.
 
+To trigger it directly, type `/karpathy-output-guidelines` in Agent chat. Cursor can also select the skill when it is relevant. To apply the guidelines throughout a project, use the always-applied rule below.
+
 ## Project Rules
 
 To apply all eight principles as a project rule, create a file such as `.cursor/rules/karpathy-output-guidelines.mdc` in the target project. Add this frontmatter, then paste the contents of [`CLAUDE.md`](CLAUDE.md) below it:
